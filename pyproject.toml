@@ -1,0 +1,8 @@
+[project]
+name = "unit-convert"
+version = "0.1.0"
+description = "A tiny command-line unit converter."
+requires-python = ">=3.9"
+
+[project.scripts]
+unit-convert = "unit_convert.cli:main"
