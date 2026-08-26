@@ -2,7 +2,13 @@
 
 
 def celsius_to_fahrenheit(celsius: float) -> float:
-    """Convert a Celsius temperature to Fahrenheit."""
+    """Convert a Celsius temperature to Fahrenheit.
+
+    Handles negative values correctly (e.g. -40 C == -40 F) -- an earlier
+    version truncated the sign when the multiplication was written as
+    ``celsius * 9 // 5 + 32`` (integer division), which silently rounded
+    negative results toward zero instead of down.
+    """
     return celsius * 9 / 5 + 32
 
 
