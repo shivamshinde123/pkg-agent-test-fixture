@@ -1,0 +1,27 @@
+name: CodeScope merge readiness
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: codescope-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    name: Analyze merge readiness
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out pull request without credentials
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Run CodeScope v2
+        uses: shivamshinde123/CodeScope@5f5b9abe6526ca6c1cd42f19e04823d1b4ebd594

@@ -1,0 +1,11 @@
+[analysis]
+max_depth = 2
+
+[architecture]
+forbid_cycles = true
+
+[[architecture.forbid]]
+id = "cli-formatting-boundary"
+from = "unit_convert/cli.py"
+to = "unit_convert/formatting.py"
+reason = "CLI formatting must remain independent until the presentation layer is formalized."
